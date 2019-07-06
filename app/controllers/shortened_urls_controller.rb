@@ -1,5 +1,5 @@
 class ShortenedUrlsController < ApplicationController
-  before_action :set_shortened_url, only: [:show, :update, :destroy]
+  before_action :set_shortened_url, only: [:show, :real_url]
 
   # GET /shortened_urls
   def index
@@ -8,9 +8,19 @@ class ShortenedUrlsController < ApplicationController
     render json: @shortened_urls
   end
 
+  def real_url
+    @shortened_url.use_count += 1
+    @shortened_url.save
+    redirect_to @shortened_url.url
+  end
+
   # GET /shortened_urls/1
   def show
-    render json: @shortened_url
+    render json: shortened_url(@shortened_url.unique_key)
+  end
+
+  def shortened_url(unique_key)
+    {shortened_url: request.host_with_port + '/' + unique_key}
   end
 
   def generate_token
@@ -27,7 +37,7 @@ class ShortenedUrlsController < ApplicationController
 
     if @shortened_url.save
       Resque.enqueue(PageTitle, @shortened_url.id)
-      render json: @shortened_url, status: :created, location: @shortened_url
+      render json: shortened_url(@shortened_url.unique_key), status: :created, location: @shortened_url
     else
       render json: @shortened_url.errors, status: :unprocessable_entity
     end

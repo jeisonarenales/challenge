@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :shortened_urls, :except => ['show']
-  get    'shortened_urls/:unique_key' => 'shortened_urls#show'
+  get 'top' => 'shortened_urls#top'
+  get 'shortened_urls/:unique_key' => 'shortened_urls#show', as: 'shortened_url'
+  post 'url' => 'shortened_urls#create'
+  get '/:unique_key' => 'shortened_urls#real_url'
 end

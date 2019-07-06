@@ -33,20 +33,6 @@ class ShortenedUrlsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shortened_urls/1
-  def update
-    if @shortened_url.update(shortened_url_params)
-      render json: @shortened_url
-    else
-      render json: @shortened_url.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /shortened_urls/1
-  def destroy
-    @shortened_url.destroy
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

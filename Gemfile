@@ -47,3 +47,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'resque'
 gem 'nokogiri'
 gem 'httparty'
+gem 'validate_url'

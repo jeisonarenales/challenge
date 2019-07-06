@@ -18,4 +18,4 @@ response: ```{
 2. Get top 100
 ```curl -X GET http://localhost:3000/top.json -H 'Content-Type: application/json'```
 
-3. redirect the real url ```curl -X GET http://localhost:3000/4jDZX ```
+3. redirect to the real url ```curl -X GET http://localhost:3000/4jDZX ```

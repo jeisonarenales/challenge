@@ -26,6 +26,7 @@ class ShortenedUrlsController < ApplicationController
     @shortened_url.unique_key = generate_token
 
     if @shortened_url.save
+      Resque.enqueue(PageTitle, @shortened_url.id)
       render json: @shortened_url, status: :created, location: @shortened_url
     else
       render json: @shortened_url.errors, status: :unprocessable_entity

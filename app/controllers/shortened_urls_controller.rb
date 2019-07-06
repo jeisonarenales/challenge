@@ -1,9 +1,9 @@
 class ShortenedUrlsController < ApplicationController
   before_action :set_shortened_url, only: [:show, :real_url]
 
-  # GET /shortened_urls
-  def index
-    @shortened_urls = ShortenedUrl.all
+  # GET /top
+  def top
+    @shortened_urls = ShortenedUrl.all.order(use_count: :desc).limit(100).select(:id, :url, :title, :unique_key, :use_count)
 
     render json: @shortened_urls
   end

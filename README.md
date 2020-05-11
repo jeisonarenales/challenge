@@ -2,11 +2,10 @@
 1. Clone this repo: ```git clone git@github.com:jeison24/challenge.git```
 2. Open project folder ```cd challenge```
 3. Execute ```docker-compose build```
-4. Execute ```docker-compose up```
-5. Open a new terminal for execute step 6 and 7
-6. Execute ```docker-compose run web rake db:create```
-7. Execute ```docker-compose run web rake db:migrate```
-8. Now the shortened url API is running in `localhost:3000`
+4. Execute ```docker-compose up -d```
+5. Execute ```docker-compose run web rake db:create```
+6. Execute ```docker-compose run web rake db:migrate```
+7. Now the shortened url API is running in `localhost:3000`
 
 ## How to use
 1. Create a new shortened url

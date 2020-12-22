@@ -44,7 +44,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'resque'
-gem 'nokogiri'
-gem 'httparty'
-gem 'validate_url'
+gem 'resque', '~> 2.0'
+gem 'nokogiri', '~> 1.10'
+gem 'httparty', '~> 0.18'
+gem 'validate_url', '~> 1.0'
